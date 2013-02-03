@@ -4,12 +4,12 @@ base_name: how-to-handle-million-data
 tags: []
 presentation_date: 
 version: 1.0.0
-licenses: []
+licenses: [CC BY 3.0]
 slideshare_id: 
 speaker_deck_id: 
 ustream_id: 
 vimeo_id: 
-author:
+author: Masafumi Yokoyama
   markup_language: :rd
   name: Masafumi Yokoyama
   email: myokoym@gmail.com
