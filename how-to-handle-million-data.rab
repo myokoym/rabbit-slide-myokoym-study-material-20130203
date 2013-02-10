@@ -1,7 +1,7 @@
 = 百万件くらいの\nデータの扱い方
 
-# : subtitle
-#    サブタイトル
+: subtitle
+   Unix大量ゴミファイル事件簿
 : author
    Masafumi Yokoyama
 # : institution
@@ -99,7 +99,7 @@ ls(dir)コマンドの末端
  10000
 
  $ rm *.gomi
- bash: /bin/rm: 引数リストが長すぎます
+ /bin/rm: cannot execute [引数リストが長すぎます]
 
  $ ls | wc -l
  10000
@@ -222,7 +222,7 @@ ls(dir)コマンドの末端
   * DBMSのトランザクション処理
     * DB2では100件くらいずつコミットする
     * IMPORTのcommitcountオプション
-  * プロセス数とスレッド数
-    * CPUやメモリが100%に張り付かない程度に増やす
+  * プロセス数やスレッド数
+    * メモリやCPUが100%で固定されない程度に増やすと速い
 
-(('tag:right'))(('wait'))おわり
+(('tag:right'))おわり
