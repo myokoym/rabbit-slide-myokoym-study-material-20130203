@@ -106,14 +106,94 @@
  % ruby -e '0.upto((10 ** 4) - 1) {|i| `touch #{"gomi" * 50}_#{"%04d" % i}.gomi` }'
  % (cd .. ; tar xzf gomi.tar.gz gomi)
 
-= A. 普通に削除
+= (1)
+
+= (1) 普通に削除
 
  % ls | wc -l
  10000
+
  % rm *.gomi
  zsh: 引数リストが長すぎます: rm
+
  % ls | wc -l
  10000
 
 = 消せない！
+
+= 原因
+
+* 一度にrmコマンドに渡せる引数には上限がある
+
+= (2)
+
+= (2) 1ファイルずつ削除
+
+ % rm gomi...gomi_0000.gomi
+ % rm gomi...gomi_0001.gomi
+ % rm gomi...gomi_0002.gomi
+
+= 徹夜
+
+= (3)
+
+= (3) 適量ずつ削除
+
+ % rm *0.gomi
+ % rm *1.gomi
+ % rm *2.gomi
+
+または
+
+ % find . -name "*.gomi" | xargs rm
+
+= OK!
+
+= 落とし穴
+
+* このやり方だと、rmコマンドが一万回呼ばれる
+
+ % find . -name "*.gomi" | xargs -i rm '{}'
+
+ % find . -name "*.gomi" -exec rm '{}' \;
+
+= 遅い
+
+* コマンドを呼ぶ回数が多いと遅くなる
+
+ % find . -name "*.gomi" | xargs rm
+ #=> 0.147秒
+
+ % find . -name "*.gomi" | xargs -i rm '{}'
+ #=> 14.120秒
+
+ % find . -name "*.gomi" -exec rm '{}' \;
+ #=> 18.512秒
+
+= 徹夜の恐れ
+
+= 適量ずつ
+
+* 大量
+  * 持てない
+* 少量
+  * 夜になっても終わらない
+* 適量
+  * 明るいうちに終わる
+
+== プロパティ
+
+: background-image
+   million_data.jpg
+
+: background-image-relative-width
+   35
+
+= 目次
+
+* 第一部 考え方
+* 第二部 具体例
+  * UNIXシェル
+  * ((*DBMSのトランザクション処理*))
+* 第三部 スレッド
 
