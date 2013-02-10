@@ -88,20 +88,20 @@ ls(dir)コマンドの末端
   * ファイル数: 10,000
 
  # テストデータの作り方
- % cd /tmp ; mkdir gomi ; cd gomi
- % ruby -e '0.upto((10 ** 4) - 1) {|i| `touch #{"gomi" * 50}_#{"%04d" % i}.gomi` }'
- % (cd .. ; tar czf gomi.tar.gz gomi) #バックアップ
- % (cd .. ; tar xzf gomi.tar.gz)      #復元
+ $ cd /tmp ; mkdir gomi ; cd gomi
+ $ ruby -e '0.upto((10 ** 4) - 1) {|i| `touch #{"gomi" * 50}_#{"%04d" % i}.gomi` }'
+ $ (cd .. ; tar czf gomi.tar.gz gomi) #バックアップ
+ $ (cd .. ; tar xzf gomi.tar.gz)      #復元
 
 = (1) 普通に削除
 
- % ls | wc -l  #ファイル数を数える
+ $ ls | wc -l  #ファイル数を数える
  10000
 
- % rm *.gomi
- zsh: 引数リストが長すぎます: rm
+ $ rm *.gomi
+ bash: /bin/rm: 引数リストが長すぎます
 
- % ls | wc -l
+ $ ls | wc -l
  10000
 
 = 消せない！
@@ -122,27 +122,27 @@ ls(dir)コマンドの末端
 
 = (2) 1ファイルずつ削除
 
- % rm gomi...gomi_0000.gomi
- % rm gomi...gomi_0001.gomi
- % rm gomi...gomi_0002.gomi
- % rm gomi...gomi_0003.gomi
- % rm gomi...gomi_0004.gomi
- % rm gomi...gomi_0005.gomi
- % rm gomi...gomi_0006.gomi
- % rm gomi...gomi_0007.gomi
- % rm gomi...gomi_0008.gomi
- % rm gomi...gomi_0009.gomi
- % rm gomi...gomi_0010.gomi
- % rm gomi...gomi_0011.gomi
- % rm gomi...gomi_0012.gomi
- % rm gomi...gomi_0013.gomi
- % rm gomi...gomi_0014.gomi
- % rm gomi...gomi_0015.gomi
- % rm gomi...gomi_0016.gomi
- % rm gomi...gomi_0017.gomi
- % rm gomi...gomi_0018.gomi
- % rm gomi...gomi_0019.gomi
- % rm gomi...gomi_0020
+ $ rm gomi...gomi_0000.gomi
+ $ rm gomi...gomi_0001.gomi
+ $ rm gomi...gomi_0002.gomi
+ $ rm gomi...gomi_0003.gomi
+ $ rm gomi...gomi_0004.gomi
+ $ rm gomi...gomi_0005.gomi
+ $ rm gomi...gomi_0006.gomi
+ $ rm gomi...gomi_0007.gomi
+ $ rm gomi...gomi_0008.gomi
+ $ rm gomi...gomi_0009.gomi
+ $ rm gomi...gomi_0010.gomi
+ $ rm gomi...gomi_0011.gomi
+ $ rm gomi...gomi_0012.gomi
+ $ rm gomi...gomi_0013.gomi
+ $ rm gomi...gomi_0014.gomi
+ $ rm gomi...gomi_0015.gomi
+ $ rm gomi...gomi_0016.gomi
+ $ rm gomi...gomi_0017.gomi
+ $ rm gomi...gomi_0018.gomi
+ $ rm gomi...gomi_0019.gomi
+ $ rm gomi...gomi_0020
 
 = 徹夜
 
@@ -150,29 +150,29 @@ ls(dir)コマンドの末端
 
 = (3) 適量ずつ削除
 
- % ls | wc -l
+ $ ls | wc -l
  10000
- % rm *0.gomi
- % rm *1.gomi
- % rm *2.gomi
- % rm *3.gomi
- % rm *4.gomi
- % rm *5.gomi
- % rm *6.gomi
- % rm *7.gomi
- % rm *8.gomi
- % rm *9.gomi
- % ls | wc -l
+ $ rm *0.gomi
+ $ rm *1.gomi
+ $ rm *2.gomi
+ $ rm *3.gomi
+ $ rm *4.gomi
+ $ rm *5.gomi
+ $ rm *6.gomi
+ $ rm *7.gomi
+ $ rm *8.gomi
+ $ rm *9.gomi
+ $ ls | wc -l
  0
 
 = (3) 適量ずつ削除
 
- % find . -name "*.gomi" | wc -l
+ $ find . -name "*.gomi" | wc -l
  10000
 
- % find . -name "*.gomi" | xargs rm
+ $ find . -name "*.gomi" | xargs rm
 
- % find . -name "*.gomi" | wc -l
+ $ find . -name "*.gomi" | wc -l
  0
 
 = OK!
@@ -181,21 +181,21 @@ ls(dir)コマンドの末端
 
 * 以下のやり方だと、rmコマンドが一万回呼ばれる
 
- % find . -name "*.gomi" | xargs -i rm '{}'
+ $ find . -name "*.gomi" | xargs -i rm '{}'
 
- % find . -name "*.gomi" -exec rm '{}' \;
+ $ find . -name "*.gomi" -exec rm '{}' \;
 
 = 遅い
 
 * コマンドを呼ぶ回数が多いと遅くなる
 
- % find . -name "*.gomi" | xargs rm
+ $ find . -name "*.gomi" | xargs rm
  #=> 0.147秒
 
- % find . -name "*.gomi" | xargs -i rm '{}'
+ $ find . -name "*.gomi" | xargs -i rm '{}'
  #=> 14.120秒
 
- % find . -name "*.gomi" -exec rm '{}' \;
+ $ find . -name "*.gomi" -exec rm '{}' \;
  #=> 18.512秒
 
 = 徹夜の恐れ
