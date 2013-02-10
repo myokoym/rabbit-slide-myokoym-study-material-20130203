@@ -110,7 +110,7 @@
 
 = (1) 普通に削除
 
- % ls | wc -l
+ % ls | wc -l  #ファイル数を数える
  10000
 
  % rm *.gomi
@@ -125,6 +125,16 @@
 
 * 一度にrmコマンドに渡せる引数には上限がある
 
+== プロパティ
+
+: background-image
+   million_data.jpg
+
+: background-image-relative-width
+   35
+
+= NG
+
 = (2)
 
 = (2) 1ファイルずつ削除
@@ -132,26 +142,63 @@
  % rm gomi...gomi_0000.gomi
  % rm gomi...gomi_0001.gomi
  % rm gomi...gomi_0002.gomi
+ % rm gomi...gomi_0003.gomi
+ % rm gomi...gomi_0004.gomi
+ % rm gomi...gomi_0005.gomi
+ % rm gomi...gomi_0006.gomi
+ % rm gomi...gomi_0007.gomi
+ % rm gomi...gomi_0008.gomi
+ % rm gomi...gomi_0009.gomi
+ % rm gomi...gomi_0010.gomi
+ % rm gomi...gomi_0011.gomi
+ % rm gomi...gomi_0012.gomi
+ % rm gomi...gomi_0013.gomi
+ % rm gomi...gomi_0014.gomi
+ % rm gomi...gomi_0015.gomi
+ % rm gomi...gomi_0016.gomi
+ % rm gomi...gomi_0017.gomi
+ % rm gomi...gomi_0018.gomi
+ % rm gomi...gomi_0019.gomi
+ % rm gomi...gomi_0020
 
 = 徹夜
+
+= NG
 
 = (3)
 
 = (3) 適量ずつ削除
 
+ % ls | wc -l
+ 10000
  % rm *0.gomi
  % rm *1.gomi
  % rm *2.gomi
+ % rm *3.gomi
+ % rm *4.gomi
+ % rm *5.gomi
+ % rm *6.gomi
+ % rm *7.gomi
+ % rm *8.gomi
+ % rm *9.gomi
+ % ls | wc -l
+ 0
 
-または
+= (3) 適量ずつ削除
+
+ % find . -name "*.gomi" | wc -l
+ 10000
 
  % find . -name "*.gomi" | xargs rm
+
+ % find . -name "*.gomi" | wc -l
+ 0
 
 = OK!
 
 = 落とし穴
 
-* このやり方だと、rmコマンドが一万回呼ばれる
+* 以下のやり方だと、rmコマンドが一万回呼ばれる
 
  % find . -name "*.gomi" | xargs -i rm '{}'
 
