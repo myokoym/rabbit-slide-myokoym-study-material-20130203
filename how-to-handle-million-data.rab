@@ -10,10 +10,10 @@
 #    イベント名
 # : date
 #    2013/02/03
- : allotted-time
-    30m
- : theme
-    lightning-clear-blue
+: allotted-time
+   30m
+: theme
+   lightning-clear-blue
 
 = Rabbitについて
 
@@ -30,6 +30,12 @@
 
 : background-image-relative-width
    50
+
+= 本日のテーマ
+
+* 件数が多いデータの扱い方
+  * データ移行
+  * ログフォーマット変換
 
 = キーワードは『荷物運び』
 
@@ -53,3 +59,21 @@
 
 : background-image-relative-width
    35
+
+= まとめ
+
+* 件数が多いデータは、適量に分けて処理する
+  * 適量を見極めたら勝ち
+
+= 第一部・完
+
+= 目次
+
+* 第一部 考え方
+* ((*第二部 具体例*))
+  * UNIXシェル
+  * DBMSのトランザクション処理
+* 第三部 スレッド
+
+= 第二部
+
