@@ -1,10 +1,13 @@
 ---
 id: study-material-20130203
 base_name: how-to-handle-million-data
-tags: []
+tags:
+- rabbit
+- unix
 presentation_date: 
 version: 1.0.0
-licenses: [CC BY 3.0]
+licenses:
+- CC BY 3.0
 slideshare_id: 
 speaker_deck_id: 
 ustream_id: 
