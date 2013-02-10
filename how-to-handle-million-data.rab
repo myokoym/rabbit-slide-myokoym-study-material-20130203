@@ -31,11 +31,9 @@
 : background-image-relative-width
    50
 
-= 本日のテーマ
+= テーマ
 
 * 件数が多いデータの扱い方
-  * データ移行
-  * ログフォーマット変換
 
 = キーワードは『荷物運び』
 
@@ -60,49 +58,40 @@
 : background-image-relative-width
    35
 
-= まとめ
+= 考え方
 
 * 件数が多いデータは、適量に分けて処理する
-  * 適量を見極めたら勝ち
+  * まずは適量を見極める
 
-= 第一部・完
+= 具体例
 
-= 目次
-
-* 第一部 考え方
-* ((*第二部 具体例*))
-  * Unixシェル
-
-= 第二部
-
-= 目次
-
-* 第一部 考え方
-* 第二部 具体例
-  * ((*Unixシェル*))
-
-= Unixシェル
-
-* Unixのコマンドプロンプト
-* コマンドプロンプトよりも高機能
+* 大量ファイルの削除
+  * Unixサーバー
+  * GUIが使えない
 
 = 問題
 
-* 大量ファイルの削除
-  * ディレクトリ内の.gomiファイルを全て削除したい
-  * 数千〜数万ファイル
+* ディレクトリ内の.gomiファイルを全て削除したい
 
-= 事前準備
+= 状況分析
 
-* 名前が長いファイルを大量生成
+ls(dir)コマンドの末端
+
+  # image
+  # src = gomiterminal.png
+  # relative_height = 100
+
+= 分析結果
+
+* 名前が長いファイルが大量にある
   * ファイル名: 210バイト
   * ファイル数: 10,000
 
+ # テストデータの作り方
  % cd /tmp ; mkdir gomi ; cd gomi
  % ruby -e '0.upto((10 ** 4) - 1) {|i| `touch #{"gomi" * 50}_#{"%04d" % i}.gomi` }'
- % (cd .. ; tar xzf gomi.tar.gz gomi)
-
-= (1)
+ % (cd .. ; tar czf gomi.tar.gz gomi) #バックアップ
+ % (cd .. ; tar xzf gomi.tar.gz)      #復元
 
 = (1) 普通に削除
 
@@ -131,8 +120,6 @@
 
 = NG
 
-= (2)
-
 = (2) 1ファイルずつ削除
 
  % rm gomi...gomi_0000.gomi
@@ -160,14 +147,6 @@
 = 徹夜
 
 = NG
-
-= tea break
-
-  # image
-  # src = teabreak.jpg
-  # relative_height = 100
-
-= (3)
 
 = (3) 適量ずつ削除
 
@@ -238,12 +217,12 @@
 : background-image-relative-width
    35
 
-= おわりに
+= その他の例
 
   * DBMSのトランザクション処理
-    * DB2では、100件くらいずつコミットする
+    * DB2では100件くらいずつコミットする
     * IMPORTのcommitcountオプション
   * プロセス数とスレッド数
     * CPUやメモリが100%に張り付かない程度に増やす
-    * 確認にはnmonが便利
 
+(('tag:right'))(('wait'))おわり
