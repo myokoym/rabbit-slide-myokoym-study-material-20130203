@@ -236,6 +236,12 @@
 : background-image-relative-width
    35
 
+= tea break
+
+  # image
+  # src = teabreak.jpg
+  # relative_height = 100
+
 = 目次
 
 * 第一部 考え方
@@ -243,4 +249,8 @@
   * UNIXシェル
   * ((*DBMSのトランザクション処理*))
 * 第三部 スレッド
+
+= トランザクション処理
+
+* いわゆるコミットとロールバック
 
