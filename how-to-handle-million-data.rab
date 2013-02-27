@@ -200,6 +200,11 @@ ls(dir)コマンドの末端
 
 = 徹夜の恐れ
 
+== プロパティ
+
+: as_large_as_possible
+   false
+
 = 適量ずつ
 
 * 大量
